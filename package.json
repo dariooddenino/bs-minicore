@@ -1,0 +1,32 @@
+{
+  "name": "bs-minicore",
+  "version": "0.0.1",
+  "description": "A mini standard library inspired by Core",
+  "main": "index.js",
+  "author": "Dario Oddenino",
+  "scripts": {
+    "clean": "bsb -clean-world && rm -rf lib",
+    "build": "bsb -make-world",    
+    "coverage": "npm run build && nyc jest && nyc report --reporter=html",
+    "test": "npm run build && jest",
+    "watch:bsb": "bsb -make-world -w",
+    "watch:jest": "jest --watchAll",
+    "doc": "ocamldoc -html -I lib/bs/src -I doc/stdlib-cmi -d doc src/*.mli"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "bs-platform": "1.8.1",
+    "infinite-jest": "github:glennsl/infinite-jest",
+    "nyc": "^11.1.0",
+    "tap-nyan": "^1.1.0"
+  },
+  "jest": {
+    "testRegex": "lib/js/tests/test.js"
+  },
+  "nyc": {
+    "report-dir": "./doc/coverage"
+  }
+}
